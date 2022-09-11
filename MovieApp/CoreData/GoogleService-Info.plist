@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>375423848097-3n53tosfl9f4m4blg9c0qohop978k2li.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.375423848097-3n53tosfl9f4m4blg9c0qohop978k2li</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBwhcGSJmfeG4vld38Ic-nKls1bI-QcW6M</string>
+	<key>GCM_SENDER_ID</key>
+	<string>375423848097</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com..Test1.MovieApp</string>
+	<key>PROJECT_ID</key>
+	<string>movieapp-c307f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>movieapp-c307f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:375423848097:ios:5642a8314c8bf0c7edaae0</string>
+</dict>
+</plist>
