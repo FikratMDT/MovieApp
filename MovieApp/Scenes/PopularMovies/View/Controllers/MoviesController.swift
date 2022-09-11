@@ -19,7 +19,7 @@ class MoviesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Movies"
-        
+        print("test")
         viewModel.getMovies {
             self.collection.reloadData()
         }
