@@ -43,8 +43,8 @@ extension FavoriteController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "MovieDetail") as! MovieDetail
-        controller.movieLabelDetail?.text =  movieViewModel.movies[indexPath.item].movieLabelText
+        let controller = storyboard?.instantiateViewController(withIdentifier: "MovieDetail") as! MovieDetailVC
+//        controller.movieLabelDetail?.text =  movieViewModel.movies[indexPath.item].movieLabelText
         present(controller, animated: true)
     }
 }

@@ -66,9 +66,11 @@ extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "MovieDetail".self) as! MovieDetail
-        controller.movieLabelDetail?.text = viewModel.movies[indexPath.item].movieLabelText
-        controller.viewModel.id = viewModel.movies[indexPath.item].movieId
+        let controller = storyboard?.instantiateViewController(withIdentifier: "\(MovieDetailVC.self)") as! MovieDetailVC
+//        controller.movieLabelDetail?.text = viewModel.movies[indexPath.item].movieLabelText
+        let item = viewModel.movies[indexPath.item]
+        controller.viewModel.id = item.movieId
+        print(item.movieId, "id")
 //        controller.viewModel = MovieDetailViewModel(id: viewModel.movies[indexPath.item].movieId)
         show(controller, sender: nil)
     }

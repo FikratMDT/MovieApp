@@ -10,4 +10,12 @@ import UIKit
 class GenreCell: UICollectionViewCell {
     
     @IBOutlet weak var genreLabel: UILabel!
+    override func layoutSubviews() {
+        contentView.layer.cornerRadius = 10
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.borderWidth = 1
+    }
+    public func configureCell(title:String) {
+        genreLabel.text = title
+    }
 }

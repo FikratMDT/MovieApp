@@ -15,12 +15,12 @@ protocol MovieCellProtocol{
 }
 
 class MovieCell: UICollectionViewCell {
-    @IBOutlet  weak var movieImage: UIImageView!
-    @IBOutlet  weak var movieLabel: UILabel!
-    @IBOutlet  weak var favoriteButtonView: UIButton!
+    @IBOutlet  private weak var movieImage: UIImageView!
+    @IBOutlet  private weak var movieLabel: UILabel!
+    @IBOutlet  private weak var favoriteButtonView: UIButton!
     
     var callBack:  ((Int)->())?
-    
+   
     func configure(items: MovieCellProtocol ) {
         movieLabel.text = items.movieLabelText
         movieImage.sd_setImage(with: URL(string: items.movieImagePosterPath))
@@ -29,6 +29,7 @@ class MovieCell: UICollectionViewCell {
     @IBAction func favoriteButton(_ sender: Any) {
         callBack?(tag)
         favoriteButtonView.setImage(UIImage(named: "starFill"), for: .normal)
+        
     }
     
 }

@@ -14,8 +14,9 @@ class MovieViewModel{
 
     
     func getMovies(complete: @escaping(() -> ())){
-        MovieManager.shared.getPopular { items in
-            self.movies = items.results
+        MovieManager.shared.getPopular { [weak self] items in
+            print(items, "sds")
+            self?.movies = items.results
             complete()
         }
     }

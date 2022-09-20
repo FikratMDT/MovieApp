@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct MovieDetailList: Codable {
+struct MovieDetailList: Codable,MovieDetailProtocol,OverViewCellProtocol {
+    
     let adult: Bool?
     let backdropPath: String?
     let belongsToCollection: BelongsToCollection?
@@ -27,6 +28,30 @@ struct MovieDetailList: Codable {
     let video: Bool?
     let voteAverage: Double?
     let voteCount: Int?
+    
+    var titleLabelText: String? {
+        originalTitle ?? ""
+    }
+    
+    var subtitleLabelText: String? {
+        overview ?? ""
+    }
+    
+    var movieLabelDetailText: String? {
+        title ?? ""
+    }
+    
+    var movieLabelImageView: String? {
+        "https://image.tmdb.org/t/p/original/" + (posterPath ?? "") 
+    }
+    
+    var releaseDateLabelText: String? {
+        releaseDate ?? ""
+    }
+    
+    var movieVote: Double? {
+        voteAverage ?? 0
+    }
 
     enum CodingKeys: String, CodingKey {
         case adult
