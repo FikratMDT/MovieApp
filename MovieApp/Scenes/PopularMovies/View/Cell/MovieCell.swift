@@ -29,7 +29,6 @@ class MovieCell: UICollectionViewCell {
     @IBAction func favoriteButton(_ sender: Any) {
         callBack?(tag)
         favoriteButtonView.setImage(UIImage(named: "starFill"), for: .normal)
-        
     }
     
 }

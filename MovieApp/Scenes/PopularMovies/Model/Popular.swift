@@ -21,7 +21,28 @@ struct MovieList: Codable {
 }
 
 // MARK: - Result
-struct Result: Codable, MovieCellProtocol {
+struct Result: Codable, MovieCategoryCellProtocol {
+    var releaseDateTextPr: String {
+        "Release Date: "
+    }
+    
+    
+    var movieTitleText: String {
+        originalTitle
+    }
+    
+    var movieImageView: String {
+        "https://image.tmdb.org/t/p/original/" + posterPath
+    }
+    
+    var releaseDateTitleText: String {
+        releaseDate
+    }
+    
+    var voteAvarageLabelText: Double {
+        voteAverage
+    }
+    
     
     let adult: Bool
     let backdropPath: String
@@ -34,19 +55,12 @@ struct Result: Codable, MovieCellProtocol {
     let video: Bool
     let voteAverage: Double
     let voteCount: Int
+   
     
-    var movieLabelText: String {
-        originalTitle 
-    }
+//    var movieId: Int {
+//        id
+//    }
     
-    var movieImagePosterPath: String {
-        "https://image.tmdb.org/t/p/original/" + posterPath 
-    }
-    
-    var movieId: Int {
-        id
-    }
-
     enum CodingKeys: String, CodingKey {
         case adult
         case backdropPath = "backdrop_path"

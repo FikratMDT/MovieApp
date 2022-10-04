@@ -23,6 +23,8 @@ class MoviesController: UIViewController {
         viewModel.getMovies {
             self.collection.reloadData()
         }
+        
+        collection.register(UINib(nibName: "\(MovieCategoryCell.self)", bundle: nil), forCellWithReuseIdentifier: "MovieCategoryCell")
     }
     
     @IBAction func segmentAction(_ sender: Any) {
@@ -33,16 +35,16 @@ class MoviesController: UIViewController {
 //        saveData(favorites: , favoriteImage: <#T##String#>)
     }
     
-    func saveData(favorite: Result) {
-        let model = Favorite(context: context)
-        model.favorites = favorite.movieLabelText
-        model.favoriteImage = favorite.movieImagePosterPath
-        do {
-            try context.save()
-        } catch{
-            print(error.localizedDescription)
-        }
-    }
+//    func saveData(favorite: Result) {
+//        let model = Favorite(context: context)
+//        model.favorites = favorite.movieLabelText
+//        model.favoriteImage = favorite.movieImagePosterPath
+//        do {
+//            try context.save()
+//        } catch{
+//            print(error.localizedDescription)
+//        }
+//    }
 }
 
 extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -51,12 +53,13 @@ extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCategoryCell", for: indexPath) as! MovieCategoryCell
         cell.tag = indexPath.item
-        cell.configure(items: viewModel.movies[indexPath.item])
+//        cell.configure(items: viewModel.movies[indexPath.item])
+        cell.configeMovieCategoryCell(items: viewModel.movies[indexPath.row])
 //        cell.movieImage.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/original/\(viewModel.movies[indexPath.item].posterPath)"))
         cell.callBack = { index in
-            self.saveData(favorite: self.viewModel.movies[index])
+//            self.saveData(favorite: self.viewModel.movies[index])
         }
         return cell
     }
@@ -65,13 +68,8 @@ extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource
         CGSize(width: collectionView.frame.width, height: 200)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "\(MovieDetailVC.self)") as! MovieDetailVC
-//        controller.movieLabelDetail?.text = viewModel.movies[indexPath.item].movieLabelText
-        let item = viewModel.movies[indexPath.item]
-        controller.viewModel.id = item.movieId
-        print(item.movieId, "id")
-//        controller.viewModel = MovieDetailViewModel(id: viewModel.movies[indexPath.item].movieId)
-        show(controller, sender: nil)
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(MovieVCHeaderView.self)", for: indexPath)
+        return headerView
     }
 }
