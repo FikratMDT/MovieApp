@@ -11,6 +11,7 @@ import Alamofire
 class MovieViewModel{
     
     var movies = [Result]()
+    var moviesTest: Result?
 
     
     func getMovies(complete: @escaping(() -> ())){
@@ -27,5 +28,4 @@ class MovieViewModel{
             complete()
         }
     }
-    
 }

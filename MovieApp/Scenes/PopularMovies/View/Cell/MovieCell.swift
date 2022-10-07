@@ -15,6 +15,7 @@ protocol MovieCellProtocol{
 }
 
 class MovieCell: UICollectionViewCell {
+    
     @IBOutlet  private weak var movieImage: UIImageView!
     @IBOutlet  private weak var movieLabel: UILabel!
     @IBOutlet  private weak var favoriteButtonView: UIButton!

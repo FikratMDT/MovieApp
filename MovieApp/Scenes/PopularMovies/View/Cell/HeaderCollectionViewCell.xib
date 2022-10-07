@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderCollectionViewCell" id="gTV-IL-0wX" customClass="HeaderCollectionViewCell" customModule="MovieApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="140" height="280"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="140" height="280"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="juw-kg-LuO">
+                        <rect key="frame" x="0.0" y="0.0" width="140" height="212"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="212" id="mvv-j9-fi4"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTV-7j-Ve3">
+                        <rect key="frame" x="4" y="224" width="35.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="xjk-23-nmI">
+                        <rect key="frame" x="4" y="264" width="12" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="9gm-ow-cfN"/>
+                            <constraint firstAttribute="width" constant="12" id="r7Z-0H-QHt"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCN-vZ-EOD">
+                        <rect key="frame" x="20" y="259.5" width="25.5" height="21"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <font key="NSFont" size="12" name="AppleSDGothicNeo-Thin"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="xCN-vZ-EOD" firstAttribute="height" secondItem="xjk-23-nmI" secondAttribute="height" multiplier="1.75" id="REr-dP-Jku"/>
+                <constraint firstItem="juw-kg-LuO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Sqa-KZ-i9X"/>
+                <constraint firstAttribute="bottom" secondItem="xjk-23-nmI" secondAttribute="bottom" constant="4" id="TBx-vX-DFd"/>
+                <constraint firstItem="MTV-7j-Ve3" firstAttribute="top" secondItem="juw-kg-LuO" secondAttribute="bottom" constant="12" id="UDE-mD-d1X"/>
+                <constraint firstItem="xCN-vZ-EOD" firstAttribute="centerY" secondItem="xjk-23-nmI" secondAttribute="centerY" id="Vog-j5-TBu"/>
+                <constraint firstItem="xjk-23-nmI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="ZGh-tF-2jj"/>
+                <constraint firstItem="MTV-7j-Ve3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="ddq-EN-hzw"/>
+                <constraint firstItem="juw-kg-LuO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fjU-u9-UXJ"/>
+                <constraint firstAttribute="trailing" secondItem="juw-kg-LuO" secondAttribute="trailing" id="gGY-ge-JbD"/>
+                <constraint firstItem="xCN-vZ-EOD" firstAttribute="leading" secondItem="xjk-23-nmI" secondAttribute="trailing" constant="4" id="hz1-C7-LrN"/>
+            </constraints>
+            <size key="customSize" width="140" height="280"/>
+            <connections>
+                <outlet property="headerCellImageView" destination="juw-kg-LuO" id="Ut2-Xo-qd6"/>
+                <outlet property="headerCellMovieTitle" destination="MTV-7j-Ve3" id="yPR-dP-DTI"/>
+                <outlet property="headerCellVoteAvarageLabel" destination="xCN-vZ-EOD" id="Hhl-sz-yFd"/>
+            </connections>
+            <point key="canvasLocation" x="102.89855072463769" y="91.071428571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="star" width="12" height="11"/>
+    </resources>
+</document>

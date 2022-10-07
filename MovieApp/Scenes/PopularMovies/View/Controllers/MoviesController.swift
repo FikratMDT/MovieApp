@@ -15,6 +15,7 @@ class MoviesController: UIViewController {
     
     let viewModel = MovieViewModel()
     let context = AppDelegate().persistentContainer.viewContext
+    let movieID = 0 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,16 +25,20 @@ class MoviesController: UIViewController {
             self.collection.reloadData()
         }
         
-        collection.register(UINib(nibName: "\(MovieCategoryCell.self)", bundle: nil), forCellWithReuseIdentifier: "MovieCategoryCell")
+        registerVC()
     }
     
-    @IBAction func segmentAction(_ sender: Any) {
+    
+    func registerVC(){
         
+        collection.register(UINib(nibName: "\(MovieCategoryCell.self)", bundle: nil), forCellWithReuseIdentifier: "MovieCategoryCell")
+        
+        collection.register(UINib(nibName: "\(MovieHeaderViewController.self)", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MovieHeaderViewController.self")
     }
     
-    @IBAction func favoriteButton(_ sender: Any) {
-//        saveData(favorites: , favoriteImage: <#T##String#>)
-    }
+//    @IBAction func favoriteButton(_ sender: Any) {
+////        saveData(favorites: , favoriteImage: <#T##String#>)
+//    }
     
 //    func saveData(favorite: Result) {
 //        let model = Favorite(context: context)
@@ -65,11 +70,20 @@ extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.frame.width, height: 200)
+        //812 -  120
+        //width - x
+        CGSize(width: collectionView.frame.width * 0.96, height: view.frame.height * 120 / 812)
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(MovieVCHeaderView.self)", for: indexPath)
-        return headerView
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "\(MovieDetailVC.self)") as! MovieDetailVC
+        let item = viewModel.movies[indexPath.item]
+        controller.viewModel.id = item.movieId
+        show(controller, sender: nil)
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MovieHeaderViewController.iden, for: <#T##IndexPath#>)
+//    }
 }
+

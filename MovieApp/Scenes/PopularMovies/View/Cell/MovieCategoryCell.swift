@@ -18,12 +18,12 @@ protocol MovieCategoryCellProtocol {
 
 class MovieCategoryCell: UICollectionViewCell {
 
-    @IBOutlet weak var voteAvarageLabel: UILabel!
     @IBOutlet private weak var movieTitle: UILabel!
     @IBOutlet private weak var starImage: UIImageView!
     @IBOutlet private weak var movieImage: UIImageView!
     @IBOutlet private weak var releaseDateText: UILabel!
     @IBOutlet private weak var releaseDateTitle: UILabel!
+    @IBOutlet private weak var voteAvarageLabel: UILabel!
     @IBOutlet private weak var collection: UICollectionView!
         
     var model: Result?
@@ -35,7 +35,7 @@ class MovieCategoryCell: UICollectionViewCell {
     }
     
     func setImage(){
-        movieImage.layer.cornerRadius = 100
+        movieImage.layer.cornerRadius = 10
     }
     
     func configeMovieCategoryCell (items: MovieCategoryCellProtocol){
@@ -43,7 +43,7 @@ class MovieCategoryCell: UICollectionViewCell {
         releaseDateText.text = items.releaseDateTitleText
         releaseDateTitle.text = items.releaseDateTextPr
         movieImage.sd_setImage(with: URL(string: items.movieImageView))
-        voteAvarageLabel.text = "\(items.voteAvarageLabelText * 10)"
+        voteAvarageLabel.text = "\(items.voteAvarageLabelText * 10) %"
     }
 }
 

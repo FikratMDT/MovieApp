@@ -57,9 +57,9 @@ struct Result: Codable, MovieCategoryCellProtocol {
     let voteCount: Int
    
     
-//    var movieId: Int {
-//        id
-//    }
+    var movieId: Int {
+        id
+    }
     
     enum CodingKeys: String, CodingKey {
         case adult
