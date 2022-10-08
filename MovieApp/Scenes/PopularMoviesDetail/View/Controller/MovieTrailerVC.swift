@@ -17,7 +17,8 @@ class MovieTrailerVC: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
         
         trailerViewModel.getMovieTrailer {
-            if let url = URL(string: "https://www.youtube.com/watch?v=\(self.trailerViewModel.trailerModel?.results?.first?.key ?? "")") {
+            if let url = URL(string:
+                                "https://www.youtube.com/watch?v=\(self.trailerViewModel.trailerModel?.results?.first?.key ?? "")") {
                 self.movieTrailerView?.load(URLRequest(url: url))
                 self.movieTrailerView?.allowsBackForwardNavigationGestures = true
             }

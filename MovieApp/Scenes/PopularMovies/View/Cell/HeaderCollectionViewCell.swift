@@ -18,5 +18,11 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         
         headerCellImageView.layer.cornerRadius = 10
     }
-
+    
+    func configeMovieHeaderCell (items: MovieCategoryCellProtocol) {
+        headerCellMovieTitle.text = items.movieTitleText
+        headerCellImageView.sd_setImage(with: URL(string: items.movieImageView))
+        headerCellVoteAvarageLabel.text = "\(items.voteAvarageLabelText * 10) %"
+    }
+    
 }

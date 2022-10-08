@@ -22,9 +22,10 @@ struct MovieList: Codable {
 
 // MARK: - Result
 struct Result: Codable, MovieCategoryCellProtocol {
-    var releaseDateTextPr: String {
-        "Release Date: "
-    }
+    
+//    var releaseDateTextPr: String {
+//        "Release Date: \(releaseDate)"
+//    }
     
     
     var movieTitleText: String {

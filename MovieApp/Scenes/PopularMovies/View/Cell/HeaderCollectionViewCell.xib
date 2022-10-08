@@ -16,18 +16,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="140" height="280"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="juw-kg-LuO">
-                        <rect key="frame" x="0.0" y="0.0" width="140" height="212"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="212" id="mvv-j9-fi4"/>
-                        </constraints>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="juw-kg-LuO">
+                        <rect key="frame" x="0.0" y="0.0" width="140" height="230"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTV-7j-Ve3">
-                        <rect key="frame" x="4" y="224" width="35.5" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="xjk-23-nmI">
                         <rect key="frame" x="4" y="264" width="12" height="12"/>
                         <constraints>
@@ -36,31 +27,40 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCN-vZ-EOD">
-                        <rect key="frame" x="20" y="259.5" width="25.5" height="21"/>
+                        <rect key="frame" x="20" y="263" width="120" height="14.5"/>
                         <attributedString key="attributedText">
                             <fragment content="Label">
                                 <attributes>
                                     <font key="NSFont" size="12" name="AppleSDGothicNeo-Thin"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
                         </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTV-7j-Ve3">
+                        <rect key="frame" x="0.0" y="238" width="140" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="xCN-vZ-EOD" firstAttribute="height" secondItem="xjk-23-nmI" secondAttribute="height" multiplier="1.75" id="REr-dP-Jku"/>
+                <constraint firstAttribute="trailing" secondItem="MTV-7j-Ve3" secondAttribute="trailing" id="OG5-Hv-o9t"/>
                 <constraint firstItem="juw-kg-LuO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Sqa-KZ-i9X"/>
                 <constraint firstAttribute="bottom" secondItem="xjk-23-nmI" secondAttribute="bottom" constant="4" id="TBx-vX-DFd"/>
-                <constraint firstItem="MTV-7j-Ve3" firstAttribute="top" secondItem="juw-kg-LuO" secondAttribute="bottom" constant="12" id="UDE-mD-d1X"/>
                 <constraint firstItem="xCN-vZ-EOD" firstAttribute="centerY" secondItem="xjk-23-nmI" secondAttribute="centerY" id="Vog-j5-TBu"/>
                 <constraint firstItem="xjk-23-nmI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="ZGh-tF-2jj"/>
-                <constraint firstItem="MTV-7j-Ve3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="ddq-EN-hzw"/>
                 <constraint firstItem="juw-kg-LuO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fjU-u9-UXJ"/>
                 <constraint firstAttribute="trailing" secondItem="juw-kg-LuO" secondAttribute="trailing" id="gGY-ge-JbD"/>
                 <constraint firstItem="xCN-vZ-EOD" firstAttribute="leading" secondItem="xjk-23-nmI" secondAttribute="trailing" constant="4" id="hz1-C7-LrN"/>
+                <constraint firstItem="MTV-7j-Ve3" firstAttribute="top" secondItem="juw-kg-LuO" secondAttribute="bottom" constant="8" symbolic="YES" id="jmy-Es-jWd"/>
+                <constraint firstItem="MTV-7j-Ve3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pYg-Ry-jJO"/>
+                <constraint firstAttribute="trailing" secondItem="xCN-vZ-EOD" secondAttribute="trailing" id="vMT-UT-N04"/>
+                <constraint firstItem="xCN-vZ-EOD" firstAttribute="top" secondItem="MTV-7j-Ve3" secondAttribute="bottom" constant="8" id="wEM-N7-mFP"/>
             </constraints>
             <size key="customSize" width="140" height="280"/>
             <connections>

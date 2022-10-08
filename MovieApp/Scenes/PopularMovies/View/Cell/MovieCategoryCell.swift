@@ -13,7 +13,7 @@ protocol MovieCategoryCellProtocol {
     var movieImageView: String {get}
     var releaseDateTitleText: String {get}
     var voteAvarageLabelText: Double {get}
-    var releaseDateTextPr: String {get}
+//    var releaseDateTextPr: String {get}
 }
 
 class MovieCategoryCell: UICollectionViewCell {
@@ -38,10 +38,10 @@ class MovieCategoryCell: UICollectionViewCell {
         movieImage.layer.cornerRadius = 10
     }
     
-    func configeMovieCategoryCell (items: MovieCategoryCellProtocol){
+    func configeMovieCategoryCell (items: MovieCategoryCellProtocol) {
         movieTitle.text = items.movieTitleText
         releaseDateText.text = items.releaseDateTitleText
-        releaseDateTitle.text = items.releaseDateTextPr
+//        releaseDateTitle.text = items.releaseDateTextPr
         movieImage.sd_setImage(with: URL(string: items.movieImageView))
         voteAvarageLabel.text = "\(items.voteAvarageLabelText * 10) %"
     }
