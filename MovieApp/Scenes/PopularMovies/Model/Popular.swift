@@ -21,7 +21,14 @@ struct MovieList: Codable {
 }
 
 // MARK: - Result
-struct Result: Codable, MovieCategoryCellProtocol {
+struct Result: Codable, MovieCategoryCellProtocol, MovieCategoryGenreCellProtocol {
+    var genreLabelText: [Int] {
+        genreIDS
+    }
+    
+    var genreList: [Int] {
+        genreIDS
+    }
     
 //    var releaseDateTextPr: String {
 //        "Release Date: \(releaseDate)"
@@ -57,7 +64,6 @@ struct Result: Codable, MovieCategoryCellProtocol {
     let voteAverage: Double
     let voteCount: Int
    
-    
     var movieId: Int {
         id
     }

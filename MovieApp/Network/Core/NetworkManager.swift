@@ -15,13 +15,24 @@ class NetworkManager{
     
     func request<T: Codable>(type: T.Type, url: String, method: HTTPMethod, complete: @escaping((T) -> ())){
         
-        AF.request(url, method: method).responseDecodable(of: T.self) { response in
-            switch response.result{
-            case .success(let items):
-                complete(items)
-            case .failure(let error):
-                print(error)
+        AF.request(url, method: method).responseData { response in
+            if let data = response.data {
+                do {
+                    let model = try JSONDecoder().decode(T.self, from: data)
+                    complete(model) 
+                } catch {
+                    print("catch error")
+                }
             }
         }
+//
+//        AF.request(url, method: method).responseDecodable(of: T.self) { response in
+//            switch response.result{
+//            case .succes      s(let items):
+//                complete(items)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
     }
 }

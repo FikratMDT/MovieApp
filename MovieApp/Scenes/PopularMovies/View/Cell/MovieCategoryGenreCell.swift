@@ -19,13 +19,13 @@ class MovieCategoryGenreCell: UICollectionViewCell {
         genreLayout()
     }
     
-    func genreConfigure (item: MovieCategoryGenreCellProtocol){
-//        genreLabel.text = "\(item.genreLabelText ?? 0)"
+    func genreConfigure (item: String, id: Int? = nil) {
+        genreLabel.text = item
     }
     
-    func genreLayout(){
-        contentView.layer.cornerRadius = 10
-        contentView.layer.borderWidth = 1
+    func genreLayout() {
+        layer.cornerRadius = 10
+        layer.borderWidth = 0.6
     }
 
 }

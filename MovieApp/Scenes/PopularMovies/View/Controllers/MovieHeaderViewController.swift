@@ -16,17 +16,29 @@ class MovieHeaderViewController: UICollectionReusableView {
     
     let identifier = "MovieHeaderViewController"
     let viewModel = MovieViewModel()
+    let categories = ["Popular", "Top Rated", "Now Playing", "Upcoming"]
+    var seeMoreCallBack: (() -> ())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         headerCollection.register(UINib(nibName: "\(HeaderCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "HeaderCollectionViewCell")
-        
+        configSeeMoreButton()
+        headerBottomMovieTitle.text = "\(categories[0])"
     }
     
-    func configure (){
+    func configureHeader () {
         viewModel.getMovies {
             self.headerCollection.reloadData()
         }
+    }
+    
+    func configSeeMoreButton () {
+        headerSeeMoreButton.layer.borderWidth = 0.2
+        headerSeeMoreButton.layer.cornerRadius = 10
+    }
+    
+    @IBAction func seeMoreButtonTapped(_ sender: Any) {
+        seeMoreCallBack?()
     }
 }
 

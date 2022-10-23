@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieDetailBottomCell" id="gTV-IL-0wX" customClass="MovieDetailBottomCell" customModule="MovieApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="72" height="110"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="72" height="110"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="isU-HE-6gJ">
+                        <rect key="frame" x="0.0" y="0.0" width="72" height="88"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cef-Bj-LPs">
+                        <rect key="frame" x="0.0" y="90" width="72" height="20"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="cef-Bj-LPs" secondAttribute="bottom" id="B4N-wF-vdW"/>
+                <constraint firstItem="cef-Bj-LPs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="LHA-2N-omc"/>
+                <constraint firstItem="isU-HE-6gJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bJd-Ra-ZRw"/>
+                <constraint firstAttribute="trailing" secondItem="isU-HE-6gJ" secondAttribute="trailing" id="gEH-Fn-70V"/>
+                <constraint firstItem="cef-Bj-LPs" firstAttribute="top" secondItem="isU-HE-6gJ" secondAttribute="bottom" constant="2" id="gUP-VK-RAm"/>
+                <constraint firstItem="isU-HE-6gJ" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.8" id="luc-DY-pk5"/>
+                <constraint firstItem="isU-HE-6gJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="mPh-ra-06w"/>
+                <constraint firstAttribute="trailing" secondItem="cef-Bj-LPs" secondAttribute="trailing" id="ziD-4P-UA6"/>
+            </constraints>
+            <size key="customSize" width="353" height="313"/>
+            <connections>
+                <outlet property="detailBottomImage" destination="isU-HE-6gJ" id="VRc-Zb-X7d"/>
+                <outlet property="detailBottomTitleLabel" destination="cef-Bj-LPs" id="R7d-2X-mev"/>
+            </connections>
+            <point key="canvasLocation" x="459.4202898550725" y="207.58928571428569"/>
+        </collectionViewCell>
+    </objects>
+</document>

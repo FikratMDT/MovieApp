@@ -9,6 +9,7 @@ import UIKit
 import WebKit
 
 class MovieTrailerVC: UIViewController, WKNavigationDelegate {
+    
     @IBOutlet weak var movieTrailerView: WKWebView!
     
     var trailerViewModel = MovieTrailerViewModel()

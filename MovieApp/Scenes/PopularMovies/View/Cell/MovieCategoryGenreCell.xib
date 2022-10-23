@@ -16,16 +16,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="18"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79n-3r-Cio">
+                    <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79n-3r-Cio">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="18"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="8"/>
                         <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
+                        <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" red="0.85882352941176465" green="0.8901960784313725" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="79n-3r-Cio" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5AD-Su-W54"/>
                 <constraint firstAttribute="trailing" secondItem="79n-3r-Cio" secondAttribute="trailing" id="5Ng-bC-HN8"/>

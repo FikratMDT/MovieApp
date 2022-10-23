@@ -20,9 +20,7 @@ class MoviesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Movies"
-        
-//        var doubleNum = 0.92333
-//        print(String(format: "%.2f", doubleNum))
+        configNavigationBarView()
         
         registerVC()
         
@@ -36,6 +34,13 @@ class MoviesController: UIViewController {
         collection.register(UINib(nibName: "\(MovieCategoryCell.self)", bundle: nil), forCellWithReuseIdentifier: "MovieCategoryCell")
         
         collection.register(UINib(nibName: "\(MovieHeaderViewController.self)", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(MovieHeaderViewController.self)")
+    }
+    
+    func configNavigationBarView (){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
     }
     
 //    @IBAction func favoriteButton(_ sender: Any) {
@@ -86,7 +91,10 @@ extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(MovieHeaderViewController.self)", for: indexPath) as! MovieHeaderViewController
-        header.configure()
+        header.configureHeader()
+        header.seeMoreCallBack = {
+            print("seemore")
+        }
         return header
     }
     

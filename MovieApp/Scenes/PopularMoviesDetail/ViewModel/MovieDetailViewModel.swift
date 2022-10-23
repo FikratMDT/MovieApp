@@ -10,6 +10,9 @@ import Foundation
 class MovieDetailViewModel {
     var id = 0
     var movieDetail: MovieDetailList?
+    var movieModel = [MovieList]()
+    var genreModel = [MovieDetailList]()
+    
     
 //    init(id: Int) {
 //        self.id = id

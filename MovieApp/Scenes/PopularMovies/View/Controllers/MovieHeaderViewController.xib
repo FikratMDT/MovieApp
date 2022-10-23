@@ -13,14 +13,21 @@
             <rect key="frame" x="0.0" y="0.0" width="494" height="307"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hno-oy-f3s">
-                    <rect key="frame" x="24" y="8" width="374" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hno-oy-f3s">
+                    <rect key="frame" x="24" y="8" width="374" height="21.5"/>
+                    <attributedString key="attributedText">
+                        <fragment content="Popular">
+                            <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <font key="NSFont" size="18" name="Optima-Bold"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6Ti-0W-neT">
-                    <rect key="frame" x="0.0" y="44.5" width="494" height="217.5"/>
+                    <rect key="frame" x="4" y="45.5" width="486" height="216.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C2G-9p-rhK">
                         <size key="itemSize" width="128" height="128"/>
@@ -33,33 +40,41 @@
                         <outlet property="delegate" destination="U6b-Vx-4bR" id="BAO-Tm-Pxs"/>
                     </connections>
                 </collectionView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GwA-Pf-exO">
-                    <rect key="frame" x="24" y="278" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GwA-Pf-exO">
+                    <rect key="frame" x="24" y="278" width="42.5" height="21"/>
+                    <attributedString key="attributedText">
+                        <fragment content="Label">
+                            <attributes>
+                                <font key="NSFont" size="18" name="Optima-Bold"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3f-9m-4DW">
-                    <rect key="frame" x="410" y="8.5" width="60" height="20"/>
+                    <rect key="frame" x="410" y="9" width="60" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="Hra-bd-NEq"/>
                         <constraint firstAttribute="height" constant="20" id="Zvd-9J-tF9"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="8"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" title="See  more">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="seeMoreButtonTapped:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="TBX-M3-W8t"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="6Ti-0W-neT" firstAttribute="top" secondItem="hno-oy-f3s" secondAttribute="bottom" constant="16" id="7Zg-2b-I6H"/>
-                <constraint firstItem="6Ti-0W-neT" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="KTv-8C-gR8"/>
+                <constraint firstItem="6Ti-0W-neT" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="4" id="KTv-8C-gR8"/>
                 <constraint firstItem="h3f-9m-4DW" firstAttribute="centerY" secondItem="hno-oy-f3s" secondAttribute="centerY" id="QTA-jc-GIH"/>
                 <constraint firstItem="h3f-9m-4DW" firstAttribute="leading" secondItem="hno-oy-f3s" secondAttribute="trailing" constant="12" id="Rmr-Gy-rJe"/>
-                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="6Ti-0W-neT" secondAttribute="trailing" id="UGQ-ZY-Ebb"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="6Ti-0W-neT" secondAttribute="trailing" constant="4" id="UGQ-ZY-Ebb"/>
                 <constraint firstAttribute="trailing" secondItem="h3f-9m-4DW" secondAttribute="trailing" constant="24" id="h4o-Zu-Nr8"/>
                 <constraint firstItem="GwA-Pf-exO" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="24" id="kYy-Be-YHT"/>
                 <constraint firstAttribute="bottom" secondItem="GwA-Pf-exO" secondAttribute="bottom" constant="8" id="kyU-M7-GXP"/>

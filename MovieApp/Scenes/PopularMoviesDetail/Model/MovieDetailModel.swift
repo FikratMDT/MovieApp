@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct MovieDetailList: Codable,MovieDetailProtocol,OverViewCellProtocol {
+
+struct MovieDetailList: Codable, OverViewCellProtocol {
     
     let adult: Bool?
     let backdropPath: String?
@@ -36,22 +37,8 @@ struct MovieDetailList: Codable,MovieDetailProtocol,OverViewCellProtocol {
     var subtitleLabelText: String? {
         overview ?? ""
     }
+
     
-    var movieLabelDetailText: String? {
-        title ?? ""
-    }
-    
-    var movieLabelImageView: String? {
-        "https://image.tmdb.org/t/p/original/" + (posterPath ?? "") 
-    }
-    
-    var releaseDateLabelText: String? {
-        releaseDate ?? ""
-    }
-    
-    var movieVote: Double? {
-        voteAverage ?? 0
-    }
 
     enum CodingKeys: String, CodingKey {
         case adult
