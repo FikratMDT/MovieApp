@@ -8,22 +8,19 @@
 import UIKit
 
 class SearchVC: UIViewController {
+    
+    @IBOutlet weak var textField: UITextField!
+    var viewModel = SearchViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func searchTextField(_ sender: UITextField) {
+        viewModel.searchMovies(text: sender.text ?? "")
+        print("test")
+        textField.resignFirstResponder()
+        
     }
-    */
-
 }

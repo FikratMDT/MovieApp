@@ -14,7 +14,6 @@ protocol CellProtocol {
 }
 
 class MovieDetailBottomCell: UICollectionViewCell {
-
     @IBOutlet weak var detailBottomTitleLabel: UILabel!
     @IBOutlet weak var detailBottomImage: UIImageView!
     
@@ -23,16 +22,8 @@ class MovieDetailBottomCell: UICollectionViewCell {
         detailBottomImage.layer.cornerRadius = 10
     }
     
-    override func layoutSubviews() {
-    }
-    
-    func castConfigure (items: CellProtocol) {
-        detailBottomTitleLabel.text = items.cellTitle
-        detailBottomImage.sd_setImage(with: URL(string: items.cellImage))
-    }
-    
-    func similiarConfigure (items: CellProtocol) {
-        detailBottomTitleLabel.text = items.cellTitle
-        detailBottomImage.sd_setImage(with: URL(string: items.cellImage))        
+    func configure(data: CellProtocol) {
+        detailBottomTitleLabel.text = data.cellTitle
+        detailBottomImage.sd_setImage(with: URL(string: data.cellImage))
     }
 }

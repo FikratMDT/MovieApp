@@ -34,7 +34,7 @@ class MovieDetailVC: UIViewController {
     var index: ((Int) -> ())?
     var viewModel = MovieDetailViewModel()
     var castViewModel = CastViewModel()
-    var similiarViewModel = SimiliarViewModel()
+    var similiarViewModel = SimilarViewModel()
 //    var trailerViewModel = MovieTrailerViewModel()
     
 
@@ -51,9 +51,15 @@ class MovieDetailVC: UIViewController {
             self.collection.reloadData()
         }
         
-        castViewModel.id = viewModel.id
-        castViewModel.getCast {
-            self.collection.reloadData()
+        castViewModel.getCast(id: viewModel.id) { [weak self] items in
+            self?.viewModel.items.append(MovieDetailListItem(item: items, title: "Cast", type: .cast))
+            self?.collection.reloadData()
+        }
+        similiarViewModel.getSimiliar(id: viewModel.id) { [weak self] items in
+            if let items = items {
+                self?.viewModel.items.append(MovieDetailListItem(item: items, title: "Similar Movies", type: .similarMovies))
+                self?.collection.reloadData()
+            }
         }
     }
     
@@ -85,34 +91,16 @@ class MovieDetailVC: UIViewController {
 
 extension MovieDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        2
+        viewModel.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(DetailBottomMainCell.self)", for: indexPath) as! DetailBottomMainCell
         
+        cell.configure(data: viewModel.items[indexPath.item].item as! [CellProtocol], title: viewModel.items[indexPath.item].title)
         
-        if indexPath.row == 0 {
-            cell.configSimiliarCell(data: similiarViewModel.similiarList?.similiarResults)
-          } else {
-              cell.configCastCell(data: castViewModel.castList?.cast)
-          }
-//        cell.configCastCell(data: castViewModel.castList?.cast)
-
         return cell
-    }
-    
-//    internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if (data.kind == kind1) {
-//            let cell1 = collectionView.dequeueReusableCell..  as! kind1
-//
-//            return cell1
-//        } else {
-//            let cell2 = collectionView.dequeueReusableCell.. as! kind2
-//
-//            return cell2
-//        }
-//    }
+    }   
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collection.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(MovieDetailHeaderVC.self)", for: indexPath) as! MovieDetailHeaderVC

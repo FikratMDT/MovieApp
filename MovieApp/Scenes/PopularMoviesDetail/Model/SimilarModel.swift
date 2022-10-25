@@ -1,5 +1,5 @@
 //
-//  SimiliarModel.swift
+//  SimilarModel.swift
 //  MovieApp
 //
 //  Created by Fikrat on 22.10.22.
@@ -7,21 +7,21 @@
 
 import Foundation
 
-struct SimiliarMovies: Codable {
+struct SimilarMovies: Codable {
     
     let page: Int?
-    let similiarResults: [SimiliarResults]?
+    let results: [SimilarResults]?
     let totalPages, totalResults: Int?
     
     enum CodingKeys: String, CodingKey {
-        case page, similiarResults
+        case page, results
         case totalPages = "total_pages"
         case totalResults = "total_results"
     }
 }
 
 // MARK: - Result
-struct SimiliarResults: Codable, CellProtocol {
+struct SimilarResults: Codable, CellProtocol {
     var cellTitle: String {
         originalTitle ?? ""
     }

@@ -43,7 +43,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sOg-bm-T8i">
-                        <barButtonItem key="rightBarButtonItem" image="Union" id="GX1-V1-sfj"/>
+                        <barButtonItem key="rightBarButtonItem" image="Union" id="GX1-V1-sfj">
+                            <connections>
+                                <action selector="filterButtonAction:" destination="BYZ-38-t0r" id="II7-wQ-3CY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collection" destination="H6q-c5-c9l" id="GJs-1k-9RW"/>
@@ -146,8 +150,9 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z1U-OG-Zn5">
                                 <rect key="frame" x="4" y="112" width="406" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
+                                    <action selector="searchTextField:" destination="Erg-4u-bOt" eventType="editingChanged" id="F8M-G6-WUC"/>
                                     <outlet property="delegate" destination="Erg-4u-bOt" id="Ido-qq-RDU"/>
                                 </connections>
                             </textField>
@@ -161,6 +166,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OFS-dT-ita"/>
+                    <connections>
+                        <outlet property="textField" destination="Z1U-OG-Zn5" id="62q-Vg-Z8D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6DK-ie-G9t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -593,6 +601,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uYc-aQ-OKc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1820" y="885"/>
+        </scene>
+        <!--Filter Categories-->
+        <scene sceneID="Rp0-Rz-Zao">
+            <objects>
+                <viewController storyboardIdentifier="FilterCategories" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6rM-fd-dgG" customClass="FilterCategories" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0cj-T9-3Ze">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bh5-99-O1a">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="N4C-4p-tz6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bh5-99-O1a" firstAttribute="leading" secondItem="N4C-4p-tz6" secondAttribute="leading" id="dNy-5s-WCB"/>
+                            <constraint firstItem="N4C-4p-tz6" firstAttribute="bottom" secondItem="bh5-99-O1a" secondAttribute="bottom" id="pPN-Ly-qaj"/>
+                            <constraint firstItem="bh5-99-O1a" firstAttribute="top" secondItem="N4C-4p-tz6" secondAttribute="top" id="tu4-Y1-wKO"/>
+                            <constraint firstItem="N4C-4p-tz6" firstAttribute="trailing" secondItem="bh5-99-O1a" secondAttribute="trailing" id="z53-gk-Fe9"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1xp-f4-fUK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2842" y="892"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Y7q-op-d2m">

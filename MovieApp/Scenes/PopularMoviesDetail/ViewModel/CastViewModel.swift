@@ -12,12 +12,11 @@ class CastViewModel {
     
 //    var castLists = [Cast]()
     var castList: CastList?
-    var id = 0
     
-    func getCast (complete: @escaping(() ->())) {
+    func getCast(id: Int, complete: @escaping(([Cast]) ->())) {
         CastManager.shared.getCasts(id: id) { items in
             self.castList = items
-            complete()
+            complete(items.cast)
         }
     }
 }

@@ -7,12 +7,24 @@
 
 import Foundation
 
+enum MovieDetailListItemType {
+    case cast
+    case similarMovies
+}
+
+struct MovieDetailListItem {
+    let item: Any
+    let title: String
+    let type: MovieDetailListItemType
+}
+
 class MovieDetailViewModel {
     var id = 0
     var movieDetail: MovieDetailList?
     var movieModel = [MovieList]()
     var genreModel = [MovieDetailList]()
     
+    var items = [MovieDetailListItem]()
     
 //    init(id: Int) {
 //        self.id = id

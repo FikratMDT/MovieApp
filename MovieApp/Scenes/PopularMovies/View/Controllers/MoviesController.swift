@@ -57,6 +57,13 @@ class MoviesController: UIViewController {
 //            print(error.localizedDescription)
 //        }
 //    }
+    
+    
+    @IBAction func filterButtonAction(_ sender: Any) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "\(FilterCategories.self)") as! FilterCategories
+        present(controller, animated: true)
+    }
+    
 }
 
 extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
