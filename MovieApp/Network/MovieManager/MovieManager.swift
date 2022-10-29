@@ -10,11 +10,10 @@ import UIKit
 class MovieManager{
     
     static let shared = MovieManager()
-    let url = NetworkHelper.shared.baseUrl + "3/movie/popular?api_key=e2253416fac0cd2476291eb33c92beb7&language=en-US&page=1"
-    func getPopular(complete: @escaping((MovieList) -> ())){
+    func getPopular(category: String, page: Int, complete: @escaping((MovieList) -> ())){
         
         NetworkManager.shared.request(type: MovieList.self,
-                                      url: url,
+                                      url: NetworkHelper.shared.baseUrl + "3/movie/\(category)?api_key=e2253416fac0cd2476291eb33c92beb7&language=en-US&page=\(page)",
                                       method: .get) { response in
             complete(response)
         }
