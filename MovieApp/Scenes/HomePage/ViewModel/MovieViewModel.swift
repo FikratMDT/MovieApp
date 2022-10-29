@@ -10,21 +10,29 @@ import Alamofire
 
 class MovieViewModel {
     
-    var movies = [Result]()
-    var moviesTest: Result?
+    var movies = [MovieResult]()
     var movie: MovieList?
     var category = "popular"
     var categories: String?
     
     var successCallback: (()->())?
+    var errorCallback: ((String)->())?
         
     func getMovies() {
-        MovieManager.shared.getPopular(category: category, page: (movie?.page ?? 0) + 1)  { [weak self] items in
-            print(items)
-            self?.movie = items
-            //            self?.movies = items.results
-            self?.movies.append(contentsOf: items.results)
-            self?.successCallback?()
+        MovieManager.shared.getPopular(category: category, page: (movie?.page ?? 0) + 1)  { [weak self] items, errorMessage in
+            if let errorMessage = errorMessage {
+                self?.errorCallback?(errorMessage)
+            } else if let movie = items {
+                
+                self?.movie = items
+                self?.movies.append(contentsOf: movie.results)
+                self?.successCallback?()
+            }
+//            print(items)
+//            self?.movie = items
+//            //self?.movies = items.results
+//            self?.movies.append(contentsOf: items.results)
+//            self?.successCallback?()
         }
     }
     
@@ -36,13 +44,13 @@ class MovieViewModel {
         }
     }
     
-    func getNowPlaying() {
-        MovieManager.shared.getPopular(category: "now_playing", page: 1) { [weak self] items in
-//            self?.movie = items
-            
-            self?.successCallback?()
-        }
-    }
+//    func getNowPlaying() {
+//        MovieManager.shared.getPopular(category: "now_playing", page: 1) { [weak self] items in
+////            self?.movie = items
+//            
+//            self?.successCallback?()
+//        }
+//    }
     
     //    func getPhotos(complete: @escaping(() -> ())){
     //        MovieManager.shared.getPopular { items in

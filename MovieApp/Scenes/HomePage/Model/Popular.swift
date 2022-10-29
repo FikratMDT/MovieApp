@@ -10,7 +10,7 @@ import Foundation
 // MARK: - Welcome
 struct MovieList: Codable {
     let page: Int
-    let results: [Result]
+    let results: [MovieResult]
     let totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
@@ -20,8 +20,8 @@ struct MovieList: Codable {
     }
 }
 
-// MARK: - Result
-struct Result: Codable, MovieCategoryCellProtocol, MovieCategoryGenreCellProtocol {
+// MARK: - MovieResult
+struct MovieResult: Codable, MovieCategoryCellProtocol, MovieCategoryGenreCellProtocol {
     var genreLabelText: [Int] {
         genreIDS
     }

@@ -27,7 +27,7 @@ class MovieCategoryCell: UICollectionViewCell {
     @IBOutlet private weak var voteAvarageLabel: UILabel!
     @IBOutlet private weak var collection: UICollectionView!
     
-    var model: Result?
+    var model: MovieResult?
     var genres = [Int]()
     var callBack:  ((Int)->())?
     var viewModel = MovieViewModel()

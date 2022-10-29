@@ -16,10 +16,11 @@ class MovieTrailerVC: UIViewController, WKNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+ 
         trailerViewModel.getMovieTrailer {
             if let url = URL(string:
                                 "https://www.youtube.com/watch?v=\(self.trailerViewModel.trailerModel?.results?.first?.key ?? "")") {
+                print(url, "testurl")
                 self.movieTrailerView?.load(URLRequest(url: url))
                 self.movieTrailerView?.allowsBackForwardNavigationGestures = true
             }

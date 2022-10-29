@@ -18,7 +18,7 @@ class MovieHeaderViewController: UICollectionReusableView {
     let viewModel = MovieViewModel()
     let categories = ["Popular", "Top Rated", "Now Playing", "Upcoming"]
     var seeMoreCallBack: (() -> ())?
-    var items = [Result]()
+    var items = [MovieResult]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,7 +34,7 @@ class MovieHeaderViewController: UICollectionReusableView {
 //    }
     
     func configHeader() {
-        viewModel.getNowPlaying()
+//        viewModel.getNowPlaying()
         self.headerCollection.reloadData()
     }
     

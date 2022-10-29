@@ -46,19 +46,25 @@ class MovieDetailVC: UIViewController {
         
         collection.register(UINib(nibName: "\(MovieDetailHeaderVC.self)", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(MovieDetailHeaderVC.self)")
         
-        viewModel.getMovie {
-//            self.configUI()
+        viewModel.successCallback = {
             self.collection.reloadData()
+        }
+        viewModel.getMovie {
         }
         
         castViewModel.getCast(id: viewModel.id) { [weak self] items in
             self?.viewModel.items.append(MovieDetailListItem(item: items, title: "Cast", type: .cast))
-            self?.collection.reloadData()
+        }
+        castViewModel.successCallback = {
+            self.collection.reloadData()
+        }
+        
+        similiarViewModel.successCallback = {
+            self.collection.reloadData()
         }
         similiarViewModel.getSimiliar(id: viewModel.id) { [weak self] items in
             if let items = items {
                 self?.viewModel.items.append(MovieDetailListItem(item: items, title: "Similar Movies", type: .similarMovies))
-                self?.collection.reloadData()
             }
         }
     }

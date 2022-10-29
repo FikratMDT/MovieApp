@@ -12,11 +12,18 @@ class CastViewModel {
     
 //    var castLists = [Cast]()
     var castList: CastList?
+    var successCallback: (()->())?
+    var errorCallback: ((String)->())?
     
     func getCast(id: Int, complete: @escaping(([Cast]) ->())) {
-        CastManager.shared.getCasts(id: id) { items in
-            self.castList = items
-            complete(items.cast)
+        CastManager.shared.getCasts(id: id) { items,errorMessage  in
+            if let errorMessage = errorMessage {
+                self.errorCallback?(errorMessage)
+            } else if let cast = items {
+                self.castList = cast
+                self.successCallback?()
+                complete(cast.cast)
+            }
         }
     }
 }
