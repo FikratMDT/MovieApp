@@ -13,12 +13,17 @@ class MovieDetailManager{
     static let shared = MovieDetailManager()
     
     
-    func getMovie(id: Int,complete: @escaping((MovieDetailList) -> ()) ){
+    func getMovie(id: Int,complete: @escaping((MovieDetailList?, String?) -> ()) ){
 //        let url =  "https://api.themoviedb.org/3/movie/\(id)?api_key=e2253416fac0cd2476291eb33c92beb7&language=en-US"
         NetworkManager.shared.request(type: MovieDetailList.self,
                                       url:NetworkHelper.shared.urlConfiguration("3/movie/\(id)?api_key=e2253416fac0cd2476291eb33c92beb7&language=en-US"),
                                       method: .get) { response in
-            complete(response)
+            switch response {
+            case .success(let model):
+                complete(model, nil)
+            case .failure(let error):
+                complete(nil, error.localizedDescription)
+            }
         }
     }
 //
