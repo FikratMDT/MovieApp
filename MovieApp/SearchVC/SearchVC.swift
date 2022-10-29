@@ -21,6 +21,5 @@ class SearchVC: UIViewController {
         viewModel.searchMovies(text: sender.text ?? "")
         print("test")
         textField.resignFirstResponder()
-        
     }
 }

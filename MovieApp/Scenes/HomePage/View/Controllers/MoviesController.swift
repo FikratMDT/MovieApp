@@ -15,7 +15,15 @@ class MoviesController: UIViewController {
     
     let viewModel = MovieViewModel()
     let context = AppDelegate().persistentContainer.viewContext
-    let movieID = 0 
+    let movieID = 0
+    var catehgory = FilterCategories()
+    
+    fileprivate func configure() {
+        viewModel.getMovies()
+        viewModel.successCallback = {
+            self.collection.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +32,7 @@ class MoviesController: UIViewController {
         
         registerVC()
         
-        viewModel.getMovies {
-            self.collection.reloadData()
-        }
+        configure()
     }
     
     
@@ -62,6 +68,11 @@ class MoviesController: UIViewController {
     @IBAction func filterButtonAction(_ sender: Any) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "\(FilterCategories.self)") as! FilterCategories
         present(controller, animated: true)
+        controller.callBack = { type in
+            self.viewModel.movies.removeAll()
+            self.viewModel.category = type
+            self.viewModel.getMovies()
+        }
     }
     
 }
@@ -80,7 +91,9 @@ extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource
         cell.callBack = { index in
 //            self.saveData(favorite: self.viewModel.movies[index])
         }
-        return cell
+       
+        
+                return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -98,7 +111,7 @@ extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(MovieHeaderViewController.self)", for: indexPath) as! MovieHeaderViewController
-        header.configureHeader()
+        header.configHeader()
         header.seeMoreCallBack = {
             print("seemore")
         }
@@ -107,6 +120,10 @@ extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         CGSize(width: collectionView.frame.width, height: 400)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        viewModel.pagination(index: indexPath.row)
     }
 }
 

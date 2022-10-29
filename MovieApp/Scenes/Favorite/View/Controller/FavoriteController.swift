@@ -19,7 +19,6 @@ class FavoriteController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "My Favorites"
     }
 
     override func viewWillAppear(_ animated: Bool) {

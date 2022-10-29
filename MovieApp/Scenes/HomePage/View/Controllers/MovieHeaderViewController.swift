@@ -18,6 +18,7 @@ class MovieHeaderViewController: UICollectionReusableView {
     let viewModel = MovieViewModel()
     let categories = ["Popular", "Top Rated", "Now Playing", "Upcoming"]
     var seeMoreCallBack: (() -> ())?
+    var items = [Result]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,10 +27,15 @@ class MovieHeaderViewController: UICollectionReusableView {
         headerBottomMovieTitle.text = "\(categories[0])"
     }
     
-    func configureHeader () {
-        viewModel.getMovies {
-            self.headerCollection.reloadData()
-        }
+//    func configureHeader () {
+//        viewModel.getMovies {
+//            self.headerCollection.reloadData()
+//        }
+//    }
+    
+    func configHeader() {
+        viewModel.getNowPlaying()
+        self.headerCollection.reloadData()
     }
     
     func configSeeMoreButton () {
@@ -44,12 +50,12 @@ class MovieHeaderViewController: UICollectionReusableView {
 
 extension MovieHeaderViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.movies.count
+        items.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HeaderCollectionViewCell.self)", for: indexPath) as! HeaderCollectionViewCell
-        cell.configeMovieHeaderCell(items: viewModel.movies[indexPath.row])
+        cell.configeMovieHeaderCell(items: items[indexPath.row])
         return cell
     }
     

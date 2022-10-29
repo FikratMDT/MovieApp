@@ -546,9 +546,9 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UVc-uq-CW8">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.96958789680000002" green="0.9813306074" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="selectedImageTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemBlueColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="0h5-W3-28S" kind="relationship" relationship="viewControllers" id="bWX-gw-DHJ"/>
@@ -581,11 +581,11 @@
             </objects>
             <point key="canvasLocation" x="1802.8985507246377" y="83.705357142857139"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Favorites-->
         <scene sceneID="9LP-eg-uoQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kbu-2l-mdy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="save" selectedImage="save" id="gfX-R4-YFq">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="save" selectedImage="save" id="gfX-R4-YFq">
                         <color key="badgeColor" systemColor="systemBackgroundColor"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -613,6 +613,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bh5-99-O1a">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6rM-fd-dgG" id="2C6-6k-EBu"/>
+                                    <outlet property="delegate" destination="6rM-fd-dgG" id="yfW-Tt-rOi"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="N4C-4p-tz6"/>
@@ -624,16 +628,19 @@
                             <constraint firstItem="N4C-4p-tz6" firstAttribute="trailing" secondItem="bh5-99-O1a" secondAttribute="trailing" id="z53-gk-Fe9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="table" destination="bh5-99-O1a" id="GSV-vf-pdb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1xp-f4-fUK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2842" y="892"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search-->
         <scene sceneID="Y7q-op-d2m">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LFe-xD-xna" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="Yg4-cq-gP9"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="Yg4-cq-gP9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="z75-Dd-OwR">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -650,7 +657,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="HomePageTB" width="35" height="35"/>
+        <image name="HomePageTB" width="22" height="22"/>
         <image name="Union" width="16" height="14"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="playButton" width="512" height="512"/>
@@ -661,6 +668,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

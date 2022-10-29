@@ -208,21 +208,21 @@
 		9104A35728B6967100140706 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				9104A35D28B6976C00140706 /* PopularMovies */,
+				9104A35D28B6976C00140706 /* HomePage */,
 				91B2AE2928B6AEDB008574F3 /* PopularMoviesDetail */,
 				91B2AE2F28B6B08B008574F3 /* Favorite */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		9104A35D28B6976C00140706 /* PopularMovies */ = {
+		9104A35D28B6976C00140706 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
 				9104A35E28B6978300140706 /* Model */,
 				9104A35F28B6978D00140706 /* View */,
 				9104A36028B6979400140706 /* ViewModel */,
 			);
-			path = PopularMovies;
+			path = HomePage;
 			sourceTree = "<group>";
 		};
 		9104A35E28B6978300140706 /* Model */ = {
