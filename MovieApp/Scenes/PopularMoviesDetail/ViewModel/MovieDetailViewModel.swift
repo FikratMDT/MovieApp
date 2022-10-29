@@ -25,14 +25,21 @@ class MovieDetailViewModel {
     var genreModel = [MovieDetailList]()
     
     var items = [MovieDetailListItem]()
-    
+    var successCallback: (()->())?
+    var errorCallback: ((String)->())?
 //    init(id: Int) {
 //        self.id = id
 //    }
     
     func getMovie (complete: @escaping(() ->())) {
-        MovieDetailManager.shared.getMovie(id: id) { movies in
-            self.movieDetail = movies
+        MovieDetailManager.shared.getMovie(id: id) { movies, errorMessage in
+            if let errorMessage = errorMessage {
+                self.errorCallback?(errorMessage)
+            } else if let movies = movies {
+                self.movieDetail = movies
+                self.successCallback?()
+            }
+//            self.movieDetail = movies
             complete()
         }
     }

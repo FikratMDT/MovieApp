@@ -610,8 +610,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bh5-99-O1a">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bh5-99-O1a">
+                                <rect key="frame" x="12" y="80" width="390" height="782"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="6rM-fd-dgG" id="2C6-6k-EBu"/>
@@ -622,10 +622,10 @@
                         <viewLayoutGuide key="safeArea" id="N4C-4p-tz6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bh5-99-O1a" firstAttribute="leading" secondItem="N4C-4p-tz6" secondAttribute="leading" id="dNy-5s-WCB"/>
+                            <constraint firstItem="bh5-99-O1a" firstAttribute="leading" secondItem="N4C-4p-tz6" secondAttribute="leading" constant="12" id="dNy-5s-WCB"/>
                             <constraint firstItem="N4C-4p-tz6" firstAttribute="bottom" secondItem="bh5-99-O1a" secondAttribute="bottom" id="pPN-Ly-qaj"/>
-                            <constraint firstItem="bh5-99-O1a" firstAttribute="top" secondItem="N4C-4p-tz6" secondAttribute="top" id="tu4-Y1-wKO"/>
-                            <constraint firstItem="N4C-4p-tz6" firstAttribute="trailing" secondItem="bh5-99-O1a" secondAttribute="trailing" id="z53-gk-Fe9"/>
+                            <constraint firstItem="bh5-99-O1a" firstAttribute="top" secondItem="N4C-4p-tz6" secondAttribute="top" constant="36" id="tu4-Y1-wKO"/>
+                            <constraint firstItem="N4C-4p-tz6" firstAttribute="trailing" secondItem="bh5-99-O1a" secondAttribute="trailing" constant="12" id="z53-gk-Fe9"/>
                         </constraints>
                     </view>
                     <connections>

@@ -11,12 +11,20 @@ class MovieTrailerViewModel {
     
     var id = 0
     var trailerModel: MovieTrailerModel?
-    
+    var successCallback: (()->())?
+    var errorCallback: ((String)->())?
     
     func getMovieTrailer (complete: @escaping(() ->())) {
-        MovieTrailerManager.shared.getMovieTrailer(id: id) { movies in
-            self.trailerModel = movies
+        MovieTrailerManager.shared.getMovieTrailer(id: id) { movies, errorMessage in
+            if let errorMessage = errorMessage {
+                self.errorCallback?(errorMessage)
+            } else if let trailer = movies {
+                self.trailerModel = trailer
+                self.successCallback?()
+            }
             complete()
+//            self.trailerModel = movies
+//            complete()
         }
     }
 }

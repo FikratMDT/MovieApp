@@ -38,7 +38,9 @@ class MovieDetailHeaderVC: UICollectionReusableView {
         movieDetail = data
         trailerViewModel.id = id
         configureWebView()
-        collection.reloadData()
+        viewModel.successCallback = {
+            self.collection.reloadData()
+        }
     }
     
     private func configHeaderUI (data: MovieDetailList) {
@@ -54,6 +56,8 @@ class MovieDetailHeaderVC: UICollectionReusableView {
                 self.webView?.load(URLRequest(url: url))
                 self.webView?.allowsBackForwardNavigationGestures = true
             }
+        }
+        trailerViewModel.successCallback = {
         }
     }
 }
