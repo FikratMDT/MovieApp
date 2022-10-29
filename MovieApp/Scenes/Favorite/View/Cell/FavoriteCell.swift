@@ -13,9 +13,8 @@ class FavoriteCell: UICollectionViewCell {
     @IBOutlet  weak var favoriteLabel: UILabel!
     @IBOutlet  weak var favoriteImage: UIImageView!
     
-    //    func configure(items: MovieCellProtocol ) {
-    //        
-    ////        favoriteLabel.text = items.movieLabelText
-    ////        favoriteImage.sd_setImage(with: URL(string: items.movieImagePosterPath))
-    //    }
+        func configure(items: MovieResult ) {
+            favoriteLabel.text = items.movieTitleText
+            favoriteImage.sd_setImage(with: URL(string: items.movieImageView))
+        }
 }

@@ -1,5 +1,5 @@
 //
-//  MovieHeaderViewController.swift
+//  MovieHeaderView.swift
 //  MovieApp
 //
 //  Created by Fikrat on 06.10.22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieHeaderViewController: UICollectionReusableView {
+class MovieHeaderView: UICollectionReusableView {
     
     @IBOutlet private weak var headerTopMovieTitle: UILabel!
     @IBOutlet private weak var headerSeeMoreButton: UIButton!
@@ -24,7 +24,7 @@ class MovieHeaderViewController: UICollectionReusableView {
         super.awakeFromNib()
         headerCollection.register(UINib(nibName: "\(HeaderCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "HeaderCollectionViewCell")
         configSeeMoreButton()
-        headerBottomMovieTitle.text = "\(categories[0])"
+//        headerBottomMovieTitle.text = "\(categories[0])"
     }
     
 //    func configureHeader () {
@@ -34,8 +34,10 @@ class MovieHeaderViewController: UICollectionReusableView {
 //    }
     
     func configHeader() {
-//        viewModel.getNowPlaying()
-        self.headerCollection.reloadData()
+        viewModel.getNowPlaying()
+        viewModel.successCallback = {
+            self.headerCollection.reloadData()
+        }
     }
     
     func configSeeMoreButton () {
@@ -48,14 +50,14 @@ class MovieHeaderViewController: UICollectionReusableView {
     }
 }
 
-extension MovieHeaderViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MovieHeaderView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        items.count
+        viewModel.movies.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HeaderCollectionViewCell.self)", for: indexPath) as! HeaderCollectionViewCell
-        cell.configeMovieHeaderCell(items: items[indexPath.row])
+        cell.configeMovieHeaderCell(items: viewModel.movies[indexPath.row])
         return cell
     }
     

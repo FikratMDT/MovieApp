@@ -12,8 +12,9 @@ class MovieViewModel {
     
     var movies = [MovieResult]()
     var movie: MovieList?
-    var category = "popular"
+    var category = "top_rated"
     var categories: String?
+    var page = 1
     
     var successCallback: (()->())?
     var errorCallback: ((String)->())?
@@ -44,13 +45,16 @@ class MovieViewModel {
         }
     }
     
-//    func getNowPlaying() {
-//        MovieManager.shared.getPopular(category: "now_playing", page: 1) { [weak self] items in
-////            self?.movie = items
-//            
-//            self?.successCallback?()
-//        }
-//    }
+    func getNowPlaying() {
+        MovieManager.shared.getPopular(category: "popular", page: page) { [weak self] items,errorMessage  in
+            if let errorMessage = errorMessage {
+                self?.errorCallback?(errorMessage)
+            } else if let movie = items {
+                self?.movies = movie.results 
+                self?.successCallback?()
+            }
+        }
+    }
     
     //    func getPhotos(complete: @escaping(() -> ())){
     //        MovieManager.shared.getPopular { items in

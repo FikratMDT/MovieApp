@@ -22,7 +22,7 @@ class MovieDetailVC: UIViewController {
     @IBOutlet private weak var table: UITableView!
     @IBOutlet private weak var collection: UICollectionView!
     @IBOutlet private weak var movieImageDetail: UIImageView!
-    @IBOutlet private  weak var movieLabelDetail: UILabel!
+    @IBOutlet   weak var movieLabelDetail: UILabel!
     @IBOutlet private  weak var releaseDateLabel: UILabel!
     @IBOutlet private  weak var voteLabel: UILabel!
     
