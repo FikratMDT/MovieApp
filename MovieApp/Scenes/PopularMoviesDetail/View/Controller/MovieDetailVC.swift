@@ -22,7 +22,7 @@ class MovieDetailVC: UIViewController {
     @IBOutlet private weak var table: UITableView!
     @IBOutlet private weak var collection: UICollectionView!
     @IBOutlet private weak var movieImageDetail: UIImageView!
-    @IBOutlet   weak var movieLabelDetail: UILabel!
+    @IBOutlet weak var movieLabelDetail: UILabel!
     @IBOutlet private  weak var releaseDateLabel: UILabel!
     @IBOutlet private  weak var voteLabel: UILabel!
     
@@ -36,25 +36,29 @@ class MovieDetailVC: UIViewController {
     var castViewModel = CastViewModel()
     var similiarViewModel = SimilarViewModel()
 //    var trailerViewModel = MovieTrailerViewModel()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configDetailScreen()
+    }
+    
+    fileprivate func configDetailScreen() {
         
         collection.register(UINib(nibName: "\(DetailBottomMainCell.self)", bundle: nil), forCellWithReuseIdentifier: "DetailBottomMainCell")
         
+        collection.register(UINib(nibName: "\(MovieDetailHeader.self)", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(MovieDetailHeader.self)")
         
-        collection.register(UINib(nibName: "\(MovieDetailHeaderVC.self)", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(MovieDetailHeaderVC.self)")
+        viewModel.getMovie {
+        }
         
         viewModel.successCallback = {
             self.collection.reloadData()
-        }
-        viewModel.getMovie {
         }
         
         castViewModel.getCast(id: viewModel.id) { [weak self] items in
             self?.viewModel.items.append(MovieDetailListItem(item: items, title: "Cast", type: .cast))
         }
+        
         castViewModel.successCallback = {
             self.collection.reloadData()
         }
@@ -62,37 +66,13 @@ class MovieDetailVC: UIViewController {
         similiarViewModel.successCallback = {
             self.collection.reloadData()
         }
+        
         similiarViewModel.getSimiliar(id: viewModel.id) { [weak self] items in
             if let items = items {
                 self?.viewModel.items.append(MovieDetailListItem(item: items, title: "Similar Movies", type: .similarMovies))
             }
         }
     }
-    
-    
-//    func configure(items: MovieDetailProtocol ) {
-//        movieLabelDetail.text = items.movieLabelDetailText
-//        movieImageDetail.sd_setImage(with: URL(string: items.movieLabelImageView ?? ""))
-//        releaseDateLabel.text = items.releaseDateLabelText
-//        voteLabel.text = "\(items.movieVote ?? 0.0)"
-//    }
-//
-//    
-//    fileprivate func configUI() {
-//        movieLabelDetail?.text = viewModel.movieDetail?.movieLabelDetailText
-////        movieImageDetail.sd_setImage(with: URL(string: viewModel.movieDetail?.movieLabelImageView ?? "" ))
-//        releaseDateLabel?.text = viewModel.movieDetail?.releaseDateLabelText
-//        voteLabel.text = "\(viewModel.movieDetail?.movieVote ?? 0.0)"
-//        collection.reloadData()
-//    }
-    
-    
-//    @IBAction func playButtonTapped(_ sender: Any) {
-//        let controller = storyboard?.instantiateViewController(withIdentifier: "\(MovieTrailerVC.self)") as! MovieTrailerVC
-//        controller.trailerViewModel.id = viewModel.movieDetail?.id ?? 0
-//        present(controller, animated: true)
-//    }
-    
 }
 
 extension MovieDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -109,7 +89,7 @@ extension MovieDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     }   
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collection.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(MovieDetailHeaderVC.self)", for: indexPath) as! MovieDetailHeaderVC
+        let header = collection.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(MovieDetailHeader.self)", for: indexPath) as! MovieDetailHeader
         header.configureDetailHeader(id: viewModel.movieDetail?.id ?? 0, data: viewModel.movieDetail)
         return header
     }

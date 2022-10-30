@@ -1,5 +1,5 @@
 //
-//  MovieDetailHeaderVC.swift
+//  MovieDetailHeader.swift
 //  MovieApp
 //
 //  Created by Fikrat on 10.10.22.
@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class MovieDetailHeaderVC: UICollectionReusableView {
+class MovieDetailHeader: UICollectionReusableView {
 
     @IBOutlet private weak var view: UIView!
     @IBOutlet private weak var imdbLabel: UILabel!
@@ -32,6 +32,7 @@ class MovieDetailHeaderVC: UICollectionReusableView {
     }
     
     func configureDetailHeader(id: Int, data: MovieDetailList?) {
+        
         if let data = data {
             configHeaderUI(data: data)
         }
@@ -49,7 +50,7 @@ class MovieDetailHeaderVC: UICollectionReusableView {
         imdbLabel?.text = "\(String(format: "%.1f", data.voteAverage ?? 0.0))/10 IMDb"
     }
     
-    func configureWebView() {
+   fileprivate func configureWebView() {
         trailerViewModel.getMovieTrailer {
             if let url = URL(string:
                                 "https://www.youtube.com/watch?v=\(self.trailerViewModel.trailerModel?.results?.first?.key ?? "")") {
@@ -57,12 +58,13 @@ class MovieDetailHeaderVC: UICollectionReusableView {
                 self.webView?.allowsBackForwardNavigationGestures = true
             }
         }
+       
         trailerViewModel.successCallback = {
         }
     }
 }
 
-extension MovieDetailHeaderVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MovieDetailHeader: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         movieDetail?.genres?.count ?? 0
     }

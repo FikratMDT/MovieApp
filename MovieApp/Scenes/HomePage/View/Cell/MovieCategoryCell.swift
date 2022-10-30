@@ -14,7 +14,6 @@ protocol MovieCategoryCellProtocol {
     var releaseDateTitleText: String {get}
     var voteAvarageLabelText: Double {get}
     var genreList: [Int] { get }
-    //    var releaseDateTextPr: String {get}
 }
 
 class MovieCategoryCell: UICollectionViewCell {
@@ -36,7 +35,7 @@ class MovieCategoryCell: UICollectionViewCell {
         movieImage.layer.cornerRadius = 16
     }
     
-    func configeMovieCategoryCell (items: MovieCategoryCellProtocol) {
+    func configeMovieCategoryCell(items: MovieCategoryCellProtocol) {
         collection.register(UINib(nibName: "\(MovieCategoryGenreCell.self)", bundle: nil), forCellWithReuseIdentifier: "MovieCategoryGenreCell")
         
         movieTitle.text = items.movieTitleText

@@ -24,5 +24,4 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         headerCellImageView.sd_setImage(with: URL(string: items.movieImageView))
         headerCellVoteAvarageLabel.text = "\(String(format: "%.1f", items.voteAvarageLabelText))/10 IMDb"
     }
-    
 }

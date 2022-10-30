@@ -1,5 +1,5 @@
 //
-//  Popular.swift
+//  MovieModel.swift
 //  MovieApp
 //
 //  Created by Fikrat on 13.08.22.
@@ -22,6 +22,19 @@ struct MovieList: Codable {
 
 // MARK: - MovieResult
 struct MovieResult: Codable, MovieCategoryCellProtocol, MovieCategoryGenreCellProtocol {
+    
+    let adult: Bool
+    let backdropPath: String
+    let genreIDS: [Int]
+    let id: Int
+    let originalLanguage: String
+    let originalTitle, overview: String
+    let popularity: Double
+    let posterPath, releaseDate, title: String
+    let video: Bool
+    let voteAverage: Double
+    let voteCount: Int
+   
     var genreLabelText: [Int] {
         genreIDS
     }
@@ -29,11 +42,6 @@ struct MovieResult: Codable, MovieCategoryCellProtocol, MovieCategoryGenreCellPr
     var genreList: [Int] {
         genreIDS
     }
-    
-//    var releaseDateTextPr: String {
-//        "Release Date: \(releaseDate)"
-//    }
-    
     
     var movieTitleText: String {
         originalTitle
@@ -50,20 +58,6 @@ struct MovieResult: Codable, MovieCategoryCellProtocol, MovieCategoryGenreCellPr
     var voteAvarageLabelText: Double {
         voteAverage
     }
-    
-    
-    let adult: Bool
-    let backdropPath: String
-    let genreIDS: [Int]
-    let id: Int
-    let originalLanguage: String
-    let originalTitle, overview: String
-    let popularity: Double
-    let posterPath, releaseDate, title: String
-    let video: Bool
-    let voteAverage: Double
-    let voteCount: Int
-   
     var movieId: Int {
         id
     }

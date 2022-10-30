@@ -16,7 +16,15 @@ class MoviesController: UIViewController {
     let viewModel = MovieViewModel()
     let context = AppDelegate().persistentContainer.viewContext
     let movieID = 0
-    var catehgory = FilterCategories()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "Movies"
+        configNavigationBarView()
+        registerVC()
+        configure()
+    }
     
     fileprivate func configure() {
         viewModel.getMovies()
@@ -25,24 +33,14 @@ class MoviesController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = "Movies"
-        configNavigationBarView()
-        
-        registerVC()
-        
-        configure()
-    }
-    
-    
     func registerVC() {        
         collection.register(UINib(nibName: "\(MovieCategoryCell.self)", bundle: nil), forCellWithReuseIdentifier: "MovieCategoryCell")
         
         collection.register(UINib(nibName: "\(MovieHeaderView.self)", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(MovieHeaderView.self)")
     }
     
-    func configNavigationBarView (){
+    func configNavigationBarView () {
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -74,7 +72,6 @@ class MoviesController: UIViewController {
             self.viewModel.getMovies()
         }
     }
-    
 }
 
 extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -91,8 +88,6 @@ extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource
         cell.callBack = { index in
 //            self.saveData(favorite: self.viewModel.movies[index])
         }
-       
-        
                 return cell
     }
     

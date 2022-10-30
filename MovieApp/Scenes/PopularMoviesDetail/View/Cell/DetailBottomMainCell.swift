@@ -9,17 +9,16 @@ import UIKit
 
 class DetailBottomMainCell: UICollectionViewCell {
     
+    @IBOutlet private weak var detailBottomCollection: UICollectionView!
+    @IBOutlet private weak var bottomTitleLabel: UILabel!
+    
     var viewModel = CastViewModel()
     var castListModel = [Cast]()
     var similiarListModel = [SimilarResults]()
-    
     var items = [CellProtocol]()
     
     var castCallBack: (() -> ())?
     var similiarCallBack: (() -> ())?
-    
-    @IBOutlet private weak var detailBottomCollection: UICollectionView!
-    @IBOutlet private weak var bottomTitleLabel: UILabel!
   
     func configure(data: [CellProtocol], title: String) {
         items = data

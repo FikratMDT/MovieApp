@@ -20,13 +20,14 @@ struct FilterCategoriesListItem {
 }
 
 class FilterCategories: UIViewController {
-
+    
+    @IBOutlet private weak var table: UITableView!
+    
     var item = [FilterCategoriesListItem(title: "Popular", type: .popular),
                 FilterCategoriesListItem(title: "Upcoming", type: .upcoming),
                 FilterCategoriesListItem(title: "Now Playing", type: .nowPlaying),
                 FilterCategoriesListItem(title: "Top rated", type: .topRated)]
     
-    @IBOutlet weak var table: UITableView!
     var callBack: ((String)->())?
     
     override func viewDidLoad() {

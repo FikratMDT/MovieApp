@@ -9,13 +9,14 @@ import UIKit
 
 class SearchController: UIViewController {
     
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet private weak var textField: UITextField!
+    @IBOutlet private weak var collection: UICollectionView!
     
     var viewModel = SearchViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configSearch()
         textField.becomeFirstResponder()
         collection.register(UINib(nibName: "\(MovieCategoryCell.self)", bundle: nil), forCellWithReuseIdentifier: "MovieCategoryCell")
@@ -27,21 +28,15 @@ class SearchController: UIViewController {
         textField.layer.cornerRadius = 10
     }
     
-    
-    func configSearch () {
+    func configSearch() {
     viewModel.successCallback = {
         self.collection.reloadData()
     }
 }
     
-    
     @IBAction func searchText(_ sender: UITextField) {
         viewModel.searchMovies(text: sender.text ?? "")
     }
-    
-//    @IBAction func searchTextField(_ sender: UITextField) {
-//        
-//    }
 }
 
 extension SearchController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

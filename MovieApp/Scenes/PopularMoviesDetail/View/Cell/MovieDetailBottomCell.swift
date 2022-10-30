@@ -14,8 +14,9 @@ protocol CellProtocol {
 }
 
 class MovieDetailBottomCell: UICollectionViewCell {
-    @IBOutlet weak var detailBottomTitleLabel: UILabel!
-    @IBOutlet weak var detailBottomImage: UIImageView!
+    
+    @IBOutlet private weak var detailBottomTitleLabel: UILabel!
+    @IBOutlet private weak var detailBottomImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

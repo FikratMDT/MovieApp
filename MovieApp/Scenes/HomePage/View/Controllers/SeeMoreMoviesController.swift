@@ -8,7 +8,9 @@
 import UIKit
 
 class SeeMoreMoviesController: UIViewController {
-    @IBOutlet weak var collection: UICollectionView!
+    
+    @IBOutlet private weak var collection: UICollectionView!
+    
     let viewModel = MovieViewModel()
     
     override func viewDidLoad() {

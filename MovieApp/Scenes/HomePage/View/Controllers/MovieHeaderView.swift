@@ -16,7 +16,6 @@ class MovieHeaderView: UICollectionReusableView {
     
     let identifier = "MovieHeaderViewController"
     let viewModel = MovieViewModel()
-    let categories = ["Popular", "Top Rated", "Now Playing", "Upcoming"]
     var seeMoreCallBack: (() -> ())?
     var items = [MovieResult]()
     
@@ -40,7 +39,7 @@ class MovieHeaderView: UICollectionReusableView {
         }
     }
     
-    func configSeeMoreButton () {
+    func configSeeMoreButton() {
         headerSeeMoreButton.layer.borderWidth = 0.2
         headerSeeMoreButton.layer.cornerRadius = 10
     }
