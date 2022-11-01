@@ -110,6 +110,10 @@ extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource
         header.seeMoreCallBack = {
             print("seemore")
         }
+        header.headerDidSelected = {
+            let item = self.viewModel.movies[indexPath.item]
+//            viewModel.id = item.movieId
+        }
         return header
     }
     

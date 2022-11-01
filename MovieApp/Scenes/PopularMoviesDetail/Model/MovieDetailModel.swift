@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct MovieDetailList: Codable, OverViewCellProtocol {
+struct MovieDetailList: Codable {
     
     let adult: Bool?
     let backdropPath: String?
@@ -37,8 +37,6 @@ struct MovieDetailList: Codable, OverViewCellProtocol {
     var subtitleLabelText: String? {
         overview ?? ""
     }
-
-    
 
     enum CodingKeys: String, CodingKey {
         case adult
@@ -74,7 +72,11 @@ struct BelongsToCollection: Codable {
 }
 
 // MARK: - Genre
-struct Genre: Codable {
+struct Genre: Codable, MovieCategoryGenreCellProtocolDetailVC {
+    var genreLabelText: String {
+        name ?? ""
+    }
+    
     let id: Int?
     let name: String?
 }

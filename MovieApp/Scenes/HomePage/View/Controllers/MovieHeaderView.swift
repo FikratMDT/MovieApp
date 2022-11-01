@@ -17,6 +17,7 @@ class MovieHeaderView: UICollectionReusableView {
     let identifier = "MovieHeaderViewController"
     let viewModel = MovieViewModel()
     var seeMoreCallBack: (() -> ())?
+    var headerDidSelected: (()->())?
     var items = [MovieResult]()
     
     override func awakeFromNib() {
@@ -59,6 +60,14 @@ extension MovieHeaderView: UICollectionViewDelegate, UICollectionViewDataSource,
         cell.configeMovieHeaderCell(items: viewModel.movies[indexPath.row])
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        headerDidSelected = {
+//            let item = self.viewModel.movies[indexPath.item]
+
+        }
+    }
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //315 -  140

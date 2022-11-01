@@ -19,17 +19,14 @@ struct MovieDetailListItem {
 }
 
 class MovieDetailViewModel {
+    
     var id = 0
     var movieDetail: MovieDetailList?
     var movieModel = [MovieList]()
     var genreModel = [MovieDetailList]()
-    
     var items = [MovieDetailListItem]()
     var successCallback: (()->())?
     var errorCallback: ((String)->())?
-//    init(id: Int) {
-//        self.id = id
-//    }
     
     func getMovie (complete: @escaping(() ->())) {
         MovieDetailManager.shared.getMovie(id: id) { movies, errorMessage in
@@ -39,9 +36,7 @@ class MovieDetailViewModel {
                 self.movieDetail = movies
                 self.successCallback?()
             }
-//            self.movieDetail = movies
             complete()
         }
     }
-    
 }

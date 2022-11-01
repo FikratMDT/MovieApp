@@ -57,6 +57,8 @@ extension SearchController: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "\(MovieDetailVC.self)") as! MovieDetailVC
+        let item = viewModel.item[indexPath.item]
+        controller.viewModel.id = item.movieId
         show(controller, sender: nil)
     }
 }

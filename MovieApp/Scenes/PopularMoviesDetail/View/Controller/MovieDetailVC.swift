@@ -26,10 +26,6 @@ class MovieDetailVC: UIViewController {
     @IBOutlet private  weak var releaseDateLabel: UILabel!
     @IBOutlet private  weak var voteLabel: UILabel!
     
-//    @IBAction func testButton(_ sender: Any) {
-//        let controller = storyboard?.instantiateViewController(withIdentifier: "\(MovieDetVc.self)") as! MovieDetVc
-//        
-//    }
     var movieDetail: MovieDetailList?
     var index: ((Int) -> ())?
     var viewModel = MovieDetailViewModel()
@@ -128,5 +124,5 @@ extension MovieDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, U
 //        return cell
 //    }
 //}
-//
+
 //}

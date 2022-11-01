@@ -11,9 +11,13 @@ protocol MovieCategoryGenreCellProtocol {
     var genreLabelText: [Int] {get}
 }
 
+protocol MovieCategoryGenreCellProtocolDetailVC {
+    var genreLabelText: String { get }
+}
+
 class MovieCategoryGenreCell: UICollectionViewCell {
 
-    @IBOutlet private weak var genreLabel: UILabel!
+    @IBOutlet  weak var genreLabel: UILabel!
     
     override func layoutSubviews() {
         genreLayout()
@@ -23,9 +27,12 @@ class MovieCategoryGenreCell: UICollectionViewCell {
         genreLabel.text = item
     }
     
+    func genreConfigDetailVC(item: MovieCategoryGenreCellProtocolDetailVC) {
+        genreLabel.text = item.genreLabelText
+    }
+    
     func genreLayout() {
         layer.cornerRadius = 10
         layer.borderWidth = 0.6
     }
-
 }
