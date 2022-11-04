@@ -72,10 +72,10 @@ struct BelongsToCollection: Codable {
 }
 
 // MARK: - Genre
-struct Genre: Codable, MovieCategoryGenreCellProtocolDetailVC {
-    var genreLabelText: String {
-        name ?? ""
-    }
+struct Genre: Codable {
+//    var genreLabelText: String {
+//        name ?? ""
+//    }
     
     let id: Int?
     let name: String?

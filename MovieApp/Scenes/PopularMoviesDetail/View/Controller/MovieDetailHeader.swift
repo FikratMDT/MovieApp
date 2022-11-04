@@ -28,7 +28,7 @@ class MovieDetailHeader: UICollectionReusableView {
     override func layoutSubviews() {
         view.roundCorners(corners: [.topLeft, .topRight], radius: 8.0)
         configureWebView()
-        collection.register(UINib(nibName: "\(MovieCategoryGenreCell.self)", bundle: nil), forCellWithReuseIdentifier: "MovieCategoryGenreCell")
+        collection.register(UINib(nibName: "\(HorizontalMovieGenresCell.self)", bundle: nil), forCellWithReuseIdentifier: "HorizontalMovieGenresCell")
     }
     
     func configureDetailHeader(id: Int, data: MovieDetailList?) {
@@ -70,7 +70,7 @@ extension MovieDetailHeader: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collection.dequeueReusableCell(withReuseIdentifier: "\(MovieCategoryGenreCell.self)", for: indexPath) as! MovieCategoryGenreCell
+        let cell = collection.dequeueReusableCell(withReuseIdentifier: "\(HorizontalMovieGenresCell.self)", for: indexPath) as! HorizontalMovieGenresCell
         cell.genreConfigure(item: movieDetail?.genres?[indexPath.row].name ?? "")
         return cell
     }

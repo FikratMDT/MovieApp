@@ -1,5 +1,5 @@
 //
-//  MovieCategoryCell.swift
+//  HorizontalMovieCell.swift
 //  MovieApp
 //
 //  Created by Fikrat on 01.10.22.
@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-protocol MovieCategoryCellProtocol {
+protocol HorizontalMovieCellProtocol {
     var movieTitleText: String {get}
     var movieImageView: String {get}
     var releaseDateTitleText: String {get}
@@ -16,7 +16,7 @@ protocol MovieCategoryCellProtocol {
     var genreList: [Int] { get }
 }
 
-class MovieCategoryCell: UICollectionViewCell {
+class HorizontalMovieCell: UICollectionViewCell {
     
     @IBOutlet private weak var movieTitle: UILabel!
     @IBOutlet private weak var starImage: UIImageView!
@@ -29,14 +29,14 @@ class MovieCategoryCell: UICollectionViewCell {
     var model: MovieResult?
     var genres = [Int]()
     var callBack:  ((Int)->())?
-    var viewModel = MovieViewModel()
+    var viewModel = HomePageViewModel()
     
     override func awakeFromNib() {
         movieImage.layer.cornerRadius = 16
     }
     
-    func configeMovieCategoryCell(items: MovieCategoryCellProtocol) {
-        collection.register(UINib(nibName: "\(MovieCategoryGenreCell.self)", bundle: nil), forCellWithReuseIdentifier: "MovieCategoryGenreCell")
+    func configCell(items: HorizontalMovieCellProtocol) {
+        collection.register(UINib(nibName: "\(HorizontalMovieGenresCell.self)", bundle: nil), forCellWithReuseIdentifier: "HorizontalMovieGenresCell")
         
         movieTitle.text = items.movieTitleText
         releaseDateText.text = items.releaseDateTitleText
@@ -49,14 +49,14 @@ class MovieCategoryCell: UICollectionViewCell {
     }
 }
 
-extension MovieCategoryCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HorizontalMovieCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         genres.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collection.dequeueReusableCell(withReuseIdentifier: "\(MovieCategoryGenreCell.self)", for: indexPath) as! MovieCategoryGenreCell
+        let cell = collection.dequeueReusableCell(withReuseIdentifier: "\(HorizontalMovieGenresCell.self)", for: indexPath) as! HorizontalMovieGenresCell
         cell.genreConfigure(item: "\(genres[indexPath.item])")
         return cell
     }

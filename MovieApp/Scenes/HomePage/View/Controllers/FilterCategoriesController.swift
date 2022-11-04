@@ -1,5 +1,5 @@
 //
-//  FilterCategories.swift
+//  FilterCategoriesController.swift
 //  MovieApp
 //
 //  Created by Fikrat on 25.10.22.
@@ -19,7 +19,7 @@ struct FilterCategoriesListItem {
     var type: FilterCategoriesListItemType
 }
 
-class FilterCategories: UIViewController {
+class FilterCategoriesController: UIViewController {
     
     @IBOutlet private weak var table: UITableView!
     
@@ -37,7 +37,7 @@ class FilterCategories: UIViewController {
     }
 }
 
-extension FilterCategories: UITableViewDelegate, UITableViewDataSource {
+extension FilterCategoriesController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         item.count

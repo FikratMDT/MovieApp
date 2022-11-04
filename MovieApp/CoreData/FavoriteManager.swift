@@ -16,10 +16,10 @@ class FavoriteManager {
     
     func fetch(complete: (() -> ())) {
         do {
-            favoriteList = try! context.fetch(Favorite.fetchRequest())
+            favoriteList = try context.fetch(Favorite.fetchRequest())
             complete()
-        } catch{
-            print(error.localizedDescription)
+        } catch {
+             print(error.localizedDescription)
         }
     }
     

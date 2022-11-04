@@ -1,5 +1,5 @@
 //
-//  HeaderCollectionViewCell.swift
+//  VerticalMovieCell.swift
 //  MovieApp
 //
 //  Created by Fikrat on 07.10.22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HeaderCollectionViewCell: UICollectionViewCell {
+class VerticalMovieCell: UICollectionViewCell {
     
     @IBOutlet private weak var headerCellMovieTitle: UILabel!
     @IBOutlet private weak var headerCellImageView: UIImageView!
@@ -19,7 +19,7 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         headerCellImageView.layer.cornerRadius = 10
     }
     
-    func configeMovieHeaderCell (items: MovieCategoryCellProtocol) {
+    func configCell (items: HorizontalMovieCellProtocol) {
         headerCellMovieTitle.text = items.movieTitleText
         headerCellImageView.sd_setImage(with: URL(string: items.movieImageView))
         headerCellVoteAvarageLabel.text = "\(String(format: "%.1f", items.voteAvarageLabelText))/10 IMDb"

@@ -1,5 +1,5 @@
 //
-//  MovieDetailVC.swift
+//  MovieDetailController.swift
 //  MovieApp
 //
 //  Created by Fikrat on 13.08.22.
@@ -16,7 +16,7 @@ import SDWebImage
 //    var movieVote: Double? {get}
 //}
 
-class MovieDetailVC: UIViewController {
+class MovieDetailController: UIViewController {
     
     @IBOutlet private weak var scroll: UIScrollView!
     @IBOutlet private weak var table: UITableView!
@@ -40,7 +40,7 @@ class MovieDetailVC: UIViewController {
     
     fileprivate func configDetailScreen() {
         
-        collection.register(UINib(nibName: "\(DetailBottomMainCell.self)", bundle: nil), forCellWithReuseIdentifier: "DetailBottomMainCell")
+        collection.register(UINib(nibName: "\(MovieDetailCell.self)", bundle: nil), forCellWithReuseIdentifier: "MovieDetailCell")
         
         collection.register(UINib(nibName: "\(MovieDetailHeader.self)", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(MovieDetailHeader.self)")
         
@@ -71,13 +71,13 @@ class MovieDetailVC: UIViewController {
     }
 }
 
-extension MovieDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MovieDetailController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(DetailBottomMainCell.self)", for: indexPath) as! DetailBottomMainCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MovieDetailCell.self)", for: indexPath) as! MovieDetailCell
         
         cell.configure(data: viewModel.items[indexPath.item].item as! [CellProtocol], title: viewModel.items[indexPath.item].title)
         

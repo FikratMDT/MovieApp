@@ -14,7 +14,7 @@ class FavoriteController: UIViewController {
 
 
     let viewModel = FavoriteManager.shared
-    let movieViewModel = MovieViewModel()
+    let movieViewModel = HomePageViewModel()
     let context = AppDelegate().persistentContainer.viewContext
 
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ extension FavoriteController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "MovieDetail") as! MovieDetailVC
+        let controller = storyboard?.instantiateViewController(withIdentifier: "MovieDetailController") as! MovieDetailController
         controller.movieLabelDetail?.text =  movieViewModel.movies[indexPath.item].movieTitleText
         present(controller, animated: true)
     }

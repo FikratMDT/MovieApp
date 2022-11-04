@@ -1,5 +1,5 @@
 //
-//  MovieTrailerVC.swift
+//  MovieTrailerController.swift
 //  MovieApp
 //
 //  Created by Fikrat on 19.09.22.
@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class MovieTrailerVC: UIViewController, WKNavigationDelegate {
+class MovieTrailerController: UIViewController, WKNavigationDelegate {
     
     @IBOutlet private weak var movieTrailerView: WKWebView!
     

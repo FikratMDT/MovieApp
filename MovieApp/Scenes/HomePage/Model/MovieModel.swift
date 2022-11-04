@@ -21,7 +21,7 @@ struct MovieList: Codable {
 }
 
 // MARK: - MovieResult
-struct MovieResult: Codable, MovieCategoryCellProtocol, MovieCategoryGenreCellProtocol {
+struct MovieResult: Codable, HorizontalMovieCellProtocol, HorizontalMovieGenresCellProcotol {
     
     let adult: Bool
     let backdropPath: String

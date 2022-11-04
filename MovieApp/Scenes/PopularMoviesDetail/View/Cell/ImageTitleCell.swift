@@ -13,7 +13,7 @@ protocol CellProtocol {
     var cellImage: String { get }
 }
 
-class MovieDetailBottomCell: UICollectionViewCell {
+class ImageTitleCell: UICollectionViewCell {
     
     @IBOutlet private weak var detailBottomTitleLabel: UILabel!
     @IBOutlet private weak var detailBottomImage: UIImageView!

@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  HomePageViewModel.swift
 //  MovieApp
 //
 //  Created by Fikrat on 20.08.22.
@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class MovieViewModel {
+class HomePageViewModel {
     
     var movies = [MovieResult]()
     var movie: MovieList?

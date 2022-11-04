@@ -11,11 +11,11 @@ class SeeMoreMoviesController: UIViewController {
     
     @IBOutlet private weak var collection: UICollectionView!
     
-    let viewModel = MovieViewModel()
+    let viewModel = HomePageViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collection.register(UINib(nibName: "\(MovieCategoryCell.self)", bundle: nil), forCellWithReuseIdentifier: "MovieCategoryCell")
+        collection.register(UINib(nibName: "\(HorizontalMovieCell.self)", bundle: nil), forCellWithReuseIdentifier: "HorizontalMovieCell")
     }
 }
 
@@ -24,8 +24,8 @@ extension SeeMoreMoviesController: UICollectionViewDelegate, UICollectionViewDat
         viewModel.movies.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCategoryCell", for: indexPath) as! MovieCategoryCell
-        cell.configeMovieCategoryCell(items: viewModel.movies[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalMovieCell", for: indexPath) as! HorizontalMovieCell
+        cell.configCell(items: viewModel.movies[indexPath.row])
         return cell
     }
 }

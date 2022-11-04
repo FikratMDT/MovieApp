@@ -17,7 +17,7 @@ class FilterCategoryCell: UITableViewCell {
         // Initialization code
     }
     
-    func configFilterCategory (data: String) {
+    func configCell (data: String) {
         filterCategoryTitle.text = data
     }
 

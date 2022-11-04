@@ -1,5 +1,5 @@
 //
-//  MovieHeaderView.swift
+//  HomePageHeader.swift
 //  MovieApp
 //
 //  Created by Fikrat on 06.10.22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieHeaderView: UICollectionReusableView {
+class HomePageHeader: UICollectionReusableView {
     
     @IBOutlet private weak var headerTopMovieTitle: UILabel!
     @IBOutlet private weak var headerSeeMoreButton: UIButton!
@@ -15,14 +15,14 @@ class MovieHeaderView: UICollectionReusableView {
     @IBOutlet private weak var headerCollection: UICollectionView!
     
     let identifier = "MovieHeaderViewController"
-    let viewModel = MovieViewModel()
+    let viewModel = HomePageViewModel()
     var seeMoreCallBack: (() -> ())?
     var headerDidSelected: (()->())?
     var items = [MovieResult]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        headerCollection.register(UINib(nibName: "\(HeaderCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "HeaderCollectionViewCell")
+        headerCollection.register(UINib(nibName: "\(VerticalMovieCell.self)", bundle: nil), forCellWithReuseIdentifier: "VerticalMovieCell")
         configSeeMoreButton()
 //        headerBottomMovieTitle.text = "\(categories[0])"
     }
@@ -50,14 +50,14 @@ class MovieHeaderView: UICollectionReusableView {
     }
 }
 
-extension MovieHeaderView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomePageHeader: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.movies.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HeaderCollectionViewCell.self)", for: indexPath) as! HeaderCollectionViewCell
-        cell.configeMovieHeaderCell(items: viewModel.movies[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(VerticalMovieCell.self)", for: indexPath) as! VerticalMovieCell
+        cell.configCell(items: viewModel.movies[indexPath.row])
         return cell
     }
     

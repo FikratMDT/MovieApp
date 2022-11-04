@@ -1,5 +1,5 @@
 //
-//  MoviesController.swift
+//  HomePageController.swift
 //  MovieApp
 //
 //  Created by Fikrat on 13.08.22.
@@ -9,11 +9,11 @@ import UIKit
 import Alamofire
 import SDWebImage
 
-class MoviesController: UIViewController {
+class HomePageController: UIViewController {
     
     @IBOutlet private weak var collection: UICollectionView!
     
-    let viewModel = MovieViewModel()
+    let viewModel = HomePageViewModel()
     let context = AppDelegate().persistentContainer.viewContext
     let movieID = 0
     
@@ -22,7 +22,7 @@ class MoviesController: UIViewController {
         
         title = "Movies"
         configNavigationBarView()
-        registerVC()
+        register()
         configure()
     }
     
@@ -33,10 +33,10 @@ class MoviesController: UIViewController {
         }
     }
     
-    func registerVC() {        
-        collection.register(UINib(nibName: "\(MovieCategoryCell.self)", bundle: nil), forCellWithReuseIdentifier: "MovieCategoryCell")
+    func register() {
+        collection.register(UINib(nibName: "\(HorizontalMovieCell.self)", bundle: nil), forCellWithReuseIdentifier: "HorizontalMovieCell")
         
-        collection.register(UINib(nibName: "\(MovieHeaderView.self)", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(MovieHeaderView.self)")
+        collection.register(UINib(nibName: "\(HomePageHeader.self)", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(HomePageHeader.self)")
     }
     
     func configNavigationBarView () {
@@ -64,7 +64,7 @@ class MoviesController: UIViewController {
     
     
     @IBAction func filterButtonAction(_ sender: Any) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "\(FilterCategories.self)") as! FilterCategories
+        let controller = storyboard?.instantiateViewController(withIdentifier: "\(FilterCategoriesController.self)") as! FilterCategoriesController
         present(controller, animated: true)
         controller.callBack = { type in
             self.viewModel.movies.removeAll()
@@ -74,17 +74,15 @@ class MoviesController: UIViewController {
     }
 }
 
-extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomePageController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCategoryCell", for: indexPath) as! MovieCategoryCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalMovieCell", for: indexPath) as! HorizontalMovieCell
         cell.tag = indexPath.item
-//        cell.configure(items: viewModel.movies[indexPath.item])
-        cell.configeMovieCategoryCell(items: viewModel.movies[indexPath.row])
-//        cell.movieImage.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/original/\(viewModel.movies[indexPath.item].posterPath)"))
+        cell.configCell(items: viewModel.movies[indexPath.row])
         cell.callBack = { index in
 //            self.saveData(favorite: self.viewModel.movies[index])
         }
@@ -98,20 +96,20 @@ extension MoviesController: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "\(MovieDetailVC.self)") as! MovieDetailVC
+        let controller = storyboard?.instantiateViewController(withIdentifier: "\(MovieDetailController.self)") as! MovieDetailController
         let item = viewModel.movies[indexPath.item]
         controller.viewModel.id = item.movieId
         show(controller, sender: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(MovieHeaderView.self)", for: indexPath) as! MovieHeaderView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(HomePageHeader.self)", for: indexPath) as! HomePageHeader
         header.configHeader()
         header.seeMoreCallBack = {
             print("seemore")
         }
         header.headerDidSelected = {
-            let item = self.viewModel.movies[indexPath.item]
+//            let item = self.viewModel.movies[indexPath.item]
 //            viewModel.id = item.movieId
         }
         return header

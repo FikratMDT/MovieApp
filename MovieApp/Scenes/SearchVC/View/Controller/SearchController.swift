@@ -19,7 +19,7 @@ class SearchController: UIViewController {
         
         configSearch()
         textField.becomeFirstResponder()
-        collection.register(UINib(nibName: "\(MovieCategoryCell.self)", bundle: nil), forCellWithReuseIdentifier: "MovieCategoryCell")
+        collection.register(UINib(nibName: "\(HorizontalMovieCell.self)", bundle: nil), forCellWithReuseIdentifier: "HorizontalMovieCell")
         textFieldUI()
     }
     
@@ -45,9 +45,9 @@ extension SearchController: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MovieCategoryCell.self)", for: indexPath) as!
-        MovieCategoryCell
-        cell.configeMovieCategoryCell(items: viewModel.item[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HorizontalMovieCell.self)", for: indexPath) as!
+        HorizontalMovieCell
+        cell.configCell(items: viewModel.item[indexPath.row])
         return cell
     }
     
@@ -56,7 +56,7 @@ extension SearchController: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "\(MovieDetailVC.self)") as! MovieDetailVC
+        let controller = storyboard?.instantiateViewController(withIdentifier: "\(MovieDetailController.self)") as! MovieDetailController
         let item = viewModel.item[indexPath.item]
         controller.viewModel.id = item.movieId
         show(controller, sender: nil)
